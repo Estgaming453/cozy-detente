@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a17">
+  <meta name="description" content="Personnalise ton site, monte tes vidéos, crée avec une IA générative et imagine ton compagnon animal avec Estgaming.">
+  <title>Estgaming — Ton atelier créatif personnalisable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#univers" aria-label="Estgaming, accueil">Estgaming<span>.</span></a>
+    <p class="topbar-note">un refuge numérique pour souffler</p>
+  </header>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNavigation">
+  <svg class="menu-icon-3d" viewBox="0 0 100 72" aria-hidden="true">
+    <path class="hamburger-line line-top" d="M24 21H76" />
+    <path class="hamburger-line line-middle" d="M24 36H76" />
+    <path class="hamburger-line line-bottom" d="M24 51H76" />
+  </svg>
+  </button>
+  <nav class="main-navigation" id="mainNavigation" aria-label="Navigation principale" hidden>
+    <a class="nav-link" href="#univers">L’univers</a>
+    <a class="nav-link" href="#personnalisation">Personnaliser</a>
+    <a class="nav-link" href="#slime">Slime à manipuler</a>
+    <a class="nav-link" href="#atelier">Atelier créatif</a>
+    <button class="nav-link motion-toggle" id="motionToggle" type="button" aria-pressed="false">
+      <span aria-hidden="true">◈</span> <span class="motion-label">Explorer en 3D</span>
+    </button>
+    <button class="nav-link performance-toggle" id="performanceToggle" type="button" aria-pressed="false">
+      <span aria-hidden="true">⚡</span> <span class="performance-label">Mode performance</span>
+    </button>
+  </nav>
+
+  <main>
+    <section class="hero" id="univers" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> UNE PAUSE, À TON IMAGE</p>
+        <h1 id="heroTitle">Pose-toi.<br><span>Le monde peut attendre.</span></h1>
+        <p class="hero-description">Entre dans un petit univers en 3D, choisis les couleurs qui t’apaisent et prends le temps de respirer.</p>
+        <a class="primary-button" href="#personnalisation">Créer mon ambiance <span aria-hidden="true">↓</span></a>
+        <div class="hero-note"><span aria-hidden="true">✦</span> Pas d’objectif, pas de bruit. Juste un moment pour toi.</div>
+      </div>
+
+      <div class="scene-wrap">
+        <div class="scene-topline"><span><i></i> TON ESPACE CALME</span><span class="scene-live">APERÇU EN DIRECT</span></div>
+        <div class="scene-stage" id="sceneStage" aria-label="Scène abstraite en trois dimensions, personnalisable">
+          <div class="scene-stars" aria-hidden="true"></div>
+          <div class="scene-halo" aria-hidden="true"></div>
+          <div class="scene-orbit orbit-one" aria-hidden="true"></div>
+          <div class="scene-orbit orbit-two" aria-hidden="true"></div>
+          <div class="scene-orb" aria-hidden="true"><span></span></div>
+          <div class="scene-moon" aria-hidden="true"></div>
+          <div class="scene-float float-one" aria-hidden="true"></div>
+          <div class="scene-float float-two" aria-hidden="true"></div>
+          <div class="scene-landscape landscape-back" aria-hidden="true"></div>
+          <div class="scene-landscape landscape-front" aria-hidden="true"></div>
+          <div class="scene-floor" aria-hidden="true"></div>
+          <div class="scene-caption">
+            <span class="scene-caption-icon" aria-hidden="true">☼</span>
+            <span><small>AMBIANCE DU MOMENT</small><strong id="sceneThemeName">Forêt douce</strong></span>
+            <span class="scene-caption-mark" aria-hidden="true">↗</span>
+          </div>
+          <span class="scene-hint">Déplace la souris pour explorer doucement</span>
+        </div>
+        <div class="scene-controls" id="quickThemes" aria-label="Quelques ambiances relaxantes"></div>
+      </div>
+    </section>
+
+    <section class="customizer" id="personnalisation" aria-labelledby="customizerTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">TON PETIT COIN À TOI</p>
+          <h2 id="customizerTitle">Compose ton calme.</h2>
+          <p class="section-description">Change d’ambiance, ajuste les couleurs et regarde ton univers se transformer en direct.</p>
+        </div>
+        <button class="text-button reset-theme" id="resetTheme" type="button">Revenir à l’ambiance d’origine</button>
+      </div>
+
+      <section class="option-section glass" aria-labelledby="themesTitle">
+        <div class="option-section-heading">
+          <div><span class="option-step">01</span><div><h3 id="themesTitle">Choisis ton paysage intérieur</h3><p>Des palettes inspirées par les petits moments qui font du bien.</p></div></div>
+          <span class="option-hint" id="themeCount">300 ambiances</span>
+        </div>
+        <div class="theme-tools">
+          <label class="theme-search" for="themeSearch">
+            <span aria-hidden="true">⌕</span>
+            <input id="themeSearch" type="search" placeholder="Chercher une ambiance…" autocomplete="off">
+          </label>
+          <span class="theme-results" id="themeResults" aria-live="polite"></span>
+        </div>
+        <div class="theme-grid" id="themeGrid" role="group" aria-label="Choisir une ambiance"></div>
+        <nav class="theme-pagination" aria-label="Pages des ambiances">
+          <button class="page-button" id="previousThemes" type="button" aria-label="Ambiances précédentes" disabled>← Précédent</button>
+          <span id="themePage" aria-live="polite">Page 1 sur 13</span>
+          <button class="page-button" id="nextThemes" type="button" aria-label="Ambiances suivantes">Suivant →</button>
+        </nav>
+      </section>
+
+      <div class="customizer-bottom">
+        <section class="option-section glass" aria-labelledby="customColorsTitle">
+          <div class="option-section-heading">
+            <div><span class="option-step">02</span><div><h3 id="customColorsTitle">Ta palette personnelle</h3><p>Quelques couleurs, et l’atmosphère change.</p></div></div>
+          </div>
+          <div class="color-options">
+            <label class="color-option" for="customPrimary">
+              <span><b>Lueur</b><small>La lumière de ton univers</small></span>
+              <span class="color-control"><input id="customPrimary" type="color" value="#a9d5b2"><output id="customPrimaryValue">#A9D5B2</output></span>
+            </label>
+            <label class="color-option" for="customSecondary">
+              <span><b>Reflet</b><small>La nuance qui l’accompagne</small></span>
+              <span class="color-control"><input id="customSecondary" type="color" value="#d1c39a"><output id="customSecondaryValue">#D1C39A</output></span>
+            </label>
+            <label class="color-option" for="customBackground">
+              <span><b>Nuit</b><small>La profondeur du décor</small></span>
+              <span class="color-control"><input id="customBackground" type="color" value="#101a17"><output id="customBackgroundValue">#101A17</output></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="option-section glass glass-settings" aria-labelledby="glassTitle">
+          <div class="option-section-heading">
+            <div><span class="option-step">03</span><div><h3 id="glassTitle">Verre tout doux</h3><p>Des panneaux translucides, comme dans un rêve.</p></div></div>
+            <label class="switch" for="liquidGlassToggle">
+              <span class="visually-hidden">Activer le verre doux</span>
+              <input id="liquidGlassToggle" type="checkbox" role="switch" aria-label="Activer le verre doux">
+              <span class="switch-track" aria-hidden="true"></span>
+            </label>
+          </div>
+          <div class="liquid-controls is-inactive" id="liquidControls">
+            <label class="liquid-range" for="liquidGlassBlur">
+              <span><b>Douceur du flou</b><output id="liquidGlassBlurValue" for="liquidGlassBlur">18 px</output></span>
+              <input id="liquidGlassBlur" type="range" min="0" max="32" step="1" value="18">
+            </label>
+            <label class="liquid-range" for="liquidGlassOpacity">
+              <span><b>Transparence</b><output id="liquidGlassOpacityValue" for="liquidGlassOpacity">62 %</output></span>
+              <input id="liquidGlassOpacity" type="range" min="25" max="90" step="1" value="62">
+            </label>
+          </div>
+        </section>
+      </div>
+      <section class="option-section glass extras-section" aria-labelledby="extrasTitle">
+        <div class="option-section-heading">
+          <div><span class="option-step">04</span><div><h3 id="extrasTitle">Encore plus de calme</h3><p>Personnalise le décor et ajoute un petit rituel à ta pause.</p></div></div>
+        </div>
+        <div class="extras-grid">
+          <div class="extra-card scene-picker">
+            <span class="extra-icon" aria-hidden="true">✧</span>
+            <label for="scenePreset"><b>Le décor 3D</b><small>Choisis ce qui flotte dans ton univers.</small></label>
+            <select id="scenePreset">
+              <option value="planet">Planète paisible</option>
+              <option value="rings">Anneaux célestes</option>
+              <option value="crystal">Cristal flottant</option>
+              <option value="moon">Lune rêveuse</option>
+              <option value="bubbles">Bulles légères</option>
+              <option value="garden">Jardin suspendu</option>
+            </select>
+          </div>
+          <div class="extra-card sound-card">
+            <span class="extra-icon" aria-hidden="true">♫</span>
+            <div class="extra-copy"><b>Sons d’ambiance</b><small id="soundStatus" aria-live="polite">Silence — à toi de choisir</small></div>
+            <div class="sound-controls">
+              <label class="visually-hidden" for="soundscape">Choisir un son</label>
+              <select id="soundscape">
+                <option value="rain">Pluie douce</option>
+                <option value="ocean">Vagues lentes</option>
+                <option value="forest">Forêt du soir</option>
+              </select>
+              <label class="visually-hidden" for="soundVolume">Volume du son</label>
+              <input id="soundVolume" type="range" min="0" max="35" value="15">
+              <button class="small-action" id="soundToggle" type="button" aria-pressed="false">Écouter</button>
+            </div>
+          </div>
+          <div class="extra-card timer-card">
+            <span class="extra-icon" aria-hidden="true">◷</span>
+            <div class="extra-copy"><b>Minuteur de pause</b><small id="timerStatus" aria-live="polite">Une pause, sans se presser.</small></div>
+            <div class="timer-controls">
+              <label class="visually-hidden" for="timerDuration">Durée de la pause</label>
+              <select id="timerDuration">
+                <option value="5">5 minutes</option>
+                <option value="10" selected>10 minutes</option>
+                <option value="15">15 minutes</option>
+                <option value="25">25 minutes</option>
+              </select>
+              <output id="timerDisplay">10:00</output>
+              <button class="small-action" id="timerToggle" type="button">Démarrer</button>
+              <button class="icon-action" id="timerReset" type="button" aria-label="Réinitialiser le minuteur">↺</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="option-section glass menu-customizer" aria-labelledby="menuCustomizerTitle">
+        <div class="option-section-heading">
+          <div><span class="option-step">05</span><div><h3 id="menuCustomizerTitle">Personnalise ton menu</h3><p>Choisis son style et ses couleurs. Il reste fixé en bas à gauche.</p></div></div>
+          <span class="menu-mini-preview" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg></span>
+        </div>
+        <div class="menu-customizer-controls">
+          <label class="color-option" for="menuPrimary">
+            <span><b>Couleur des lignes</b><small>La teinte principale du symbole</small></span>
+            <span class="color-control"><input id="menuPrimary" type="color" value="#a9d5b2"><output id="menuPrimaryValue">#A9D5B2</output></span>
+          </label>
+          <label class="color-option" for="menuSecondary">
+            <span><b>Reflet au survol</b><small>La couleur de son halo interactif</small></span>
+            <span class="color-control"><input id="menuSecondary" type="color" value="#d1c39a"><output id="menuSecondaryValue">#D1C39A</output></span>
+          </label>
+          <label class="liquid-range menu-thickness-control" for="menuThickness">
+            <span><b>Épaisseur des lignes</b><output id="menuThicknessValue" for="menuThickness">4 px</output></span>
+            <input id="menuThickness" type="range" min="2" max="8" step="1" value="4">
+          </label>
+          <label class="menu-size-control" for="menuSize">
+            <span><b>Taille du bouton</b><small>Compact, équilibré ou bien visible</small></span>
+            <select id="menuSize">
+              <option value="compact">Compact</option>
+              <option value="standard" selected>Équilibré</option>
+              <option value="large">Bien visible</option>
+            </select>
+          </label>
+        </div>
+      </section>
+      <p class="save-note"><span aria-hidden="true">◌</span> Tes choix sont gardés sur cet appareil. Tu peux les changer ou les effacer quand tu veux.</p>
+    </section>
+
+    <section class="slime-playground" id="slime" aria-labelledby="slimeTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">UNE PAUSE À MANIPULER</p>
+          <h2 id="slimeTitle">Ta slime, à ton rythme.</h2>
+          <p class="section-description">Fais-la glisser, étire-la, puis regarde-la reprendre doucement sa forme.</p>
+        </div>
+      </div>
+      <div class="slime-panel glass">
+        <div class="slime-stage" id="slimePlayArea" aria-label="Espace de manipulation de la slime">
+          <div class="slime-stage-glow" aria-hidden="true"></div>
+          <button class="slime-blob" id="slimeBlob" type="button" aria-label="Slime à déplacer et étirer" aria-describedby="slimeInstructions">
+            <span class="slime-shine" aria-hidden="true"></span>
+            <span class="slime-bubble slime-bubble-one" aria-hidden="true"></span>
+            <span class="slime-bubble slime-bubble-two" aria-hidden="true"></span>
+          </button>
+          <span class="slime-instructions" id="slimeInstructions">Glisse la slime pour l’étirer · Flèches du clavier pour la déplacer</span>
+        </div>
+        <div class="slime-controls">
+          <label class="color-option" for="slimeColor">
+            <span><b>Couleur</b><small>Choisis sa teinte</small></span>
+            <span class="color-control"><input id="slimeColor" type="color" value="#70d9b0"><output id="slimeColorValue">#70D9B0</output></span>
+          </label>
+          <label class="liquid-range" for="slimeViscosity">
+            <span><b>Viscosité</b><output id="slimeViscosityValue" for="slimeViscosity">55 %</output></span>
+            <input id="slimeViscosity" type="range" min="10" max="90" step="1" value="55">
+          </label>
+          <label class="liquid-range" for="slimeSize">
+            <span><b>Taille</b><output id="slimeSizeValue" for="slimeSize">100 %</output></span>
+            <input id="slimeSize" type="range" min="70" max="130" step="1" value="100">
+          </label>
+          <button class="small-action slime-reset" id="slimeReset" type="button">Recentrer la slime</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="creative-workshop" id="atelier" aria-labelledby="workshopTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">TON ESPACE CRÉATIF</p>
+          <h2 id="workshopTitle">À toi de jouer.</h2>
+          <p class="section-description">Crée ton compagnon, compose ton ambiance ou fabrique un mot de passe sûr.</p>
+        </div>
+      </div>
+
+      <div class="workshop-tabs" role="tablist" aria-label="Outils personnalisables">
+        <button class="workshop-tab" id="animalTab" type="button" role="tab" aria-selected="true" aria-controls="animalPanel" tabindex="0">🐾 Mon animal</button>
+        <button class="workshop-tab" id="mediaTab" type="button" role="tab" aria-selected="false" aria-controls="mediaPanel" tabindex="-1">🎛️ Studio audio & vidéo</button>
+        <button class="workshop-tab" id="aiTab" type="button" role="tab" aria-selected="false" aria-controls="aiPanel" tabindex="-1">✨ IA générative</button>
+        <button class="workshop-tab" id="passwordTab" type="button" role="tab" aria-selected="false" aria-controls="passwordPanel" tabindex="-1">🔐 Mot de passe</button>
+      </div>
+
+      <section class="workshop-panel glass" id="animalPanel" role="tabpanel" aria-labelledby="animalTab">
+        <div class="workshop-panel-heading">
+          <div><p class="eyebrow">TON NOUVEAU COMPAGNON</p><h3>Imagine ton animal.</h3><p>Choisis son espèce, ses couleurs et son petit style.</p></div>
+        </div>
+        <div class="animal-workspace">
+          <div class="animal-preview" id="animalPreview" aria-live="polite">
+            <span class="animal-preview-caption">TON COMPAGNON</span>
+            <span class="animal-character" id="animalCharacter" aria-hidden="true">🐱</span>
+            <span class="animal-accessory" id="animalAccessoryPreview" aria-hidden="true">✨</span>
+            <strong id="animalNamePreview">Moustache</strong>
+            <span class="animal-species-preview" id="animalSpeciesPreview">Petit chat rêveur</span>
+          </div>
+          <div class="animal-controls">
+            <label class="workshop-field" for="animalName"><span>Son prénom</span><input id="animalName" type="text" maxlength="18" value="Moustache" autocomplete="off" placeholder="Ex. Nuage"></label>
+            <label class="workshop-field" for="animalSpecies"><span>Son espèce</span>
+              <select id="animalSpecies">
+                <option value="cat">Chat</option>
+                <option value="dog">Chien</option>
+                <option value="rabbit">Lapin</option>
+                <option value="fox">Renard</option>
+                <option value="panda">Panda</option>
+                <option value="bear">Ours</option>
+              </select>
+            </label>
+            <label class="workshop-field" for="animalAccessory"><span>Son accessoire</span>
+              <select id="animalAccessory">
+                <option value="✨">Petite étoile</option>
+                <option value="🎀">Nœud mignon</option>
+                <option value="👑">Couronne</option>
+                <option value="🕶️">Lunettes cool</option>
+                <option value="🌼">Fleur porte-bonheur</option>
+                <option value="">Sans accessoire</option>
+              </select>
+            </label>
+            <label class="workshop-field" for="animalColor"><span>Couleur de son univers</span><input id="animalColor" type="color" value="#a9d5b2"></label>
+            <label class="workshop-field workshop-range" for="animalSize"><span>Taille <output id="animalSizeValue" for="animalSize">100 %</output></span><input id="animalSize" type="range" min="75" max="125" value="100"></label>
+          </div>
+        </div>
+        <p class="workshop-note">Ton compagnon et ses réglages sont gardés sur cet appareil.</p>
+        <div class="animal-sound-controls">
+          <button class="small-action" id="animalSoundToggle" type="button" aria-pressed="false">♪ Écouter son d’animal</button>
+          <span id="animalSoundStatus" role="status" aria-live="polite">Son synthétisé sur cet appareil</span>
+        </div>
+      </section>
+
+      <section class="workshop-panel glass" id="mediaPanel" role="tabpanel" aria-labelledby="mediaTab" hidden>
+        <div class="workshop-panel-heading">
+          <div><p class="eyebrow">TON PETIT STUDIO</p><h3>Monte tes vidéos.</h3><p>Assemble plusieurs clips, règle les coupes, ajoute un titre et exporte ton montage localement.</p></div>
+        </div>
+        <div class="media-upload-grid">
+          <label class="media-upload" for="videoFile"><span aria-hidden="true">▶</span><strong>Ajouter des clips vidéo ou des images</strong><small id="videoFileName">Plusieurs fichiers · MP4, WebM, PNG…</small><input id="videoFile" type="file" accept="video/*,image/*" multiple></label>
+          <label class="media-upload" for="audioFiles"><span aria-hidden="true">♫</span><strong>Ajouter des musiques</strong><small>Tu peux en sélectionner plusieurs</small><input id="audioFiles" type="file" accept="audio/*" multiple></label>
+        </div>
+        <div class="media-studio">
+          <div class="video-preview" id="videoPreview">
+            <video id="studioVideo" controls playsinline preload="metadata" aria-label="Aperçu de ta vidéo"></video>
+            <img id="studioImage" alt="" hidden>
+            <p id="videoPlaceholder">Ton aperçu vidéo apparaîtra ici.</p>
+            <span class="montage-title-overlay" id="montageTitleOverlay" hidden></span>
+          </div>
+          <div class="mixer-console">
+            <div class="mixer-heading"><div><h4>Table de mixage</h4><p id="trackCount" aria-live="polite">Aucune piste ajoutée</p></div><label class="master-volume" for="musicMaster"><span>Volume musique</span><input id="musicMaster" type="range" min="0" max="100" value="80"></label></div>
+            <div class="audio-track-list" id="audioTrackList"><p class="empty-tracks">Ajoute un fichier audio pour commencer ton mix.</p></div>
+            <label class="video-volume" for="videoVolume"><span>Volume de la vidéo</span><input id="videoVolume" type="range" min="0" max="100" value="100"></label>
+          </div>
+        </div>
+        <section class="montage-console" aria-labelledby="montageTitle">
+          <div class="montage-heading"><div><h4 id="montageTitle">Timeline de montage</h4><p>Réorganise les clips, ajuste leurs points d’entrée et de sortie.</p></div><span id="montageDuration">0 clip</span></div>
+          <ol class="video-timeline" id="videoTimeline"><li class="empty-timeline">Ajoute plusieurs clips pour commencer ton montage.</li></ol>
+          <div class="montage-controls">
+            <label class="workshop-field" for="montageOverlayText"><span>Titre à afficher</span><input id="montageOverlayText" type="text" maxlength="80" placeholder="Ton titre de vidéo"></label>
+            <label class="workshop-field" for="montageFilter"><span>Filtre visuel</span><select id="montageFilter"><option value="none">Original</option><option value="grayscale(1)">Noir et blanc</option><option value="sepia(.75)">Sépia</option><option value="contrast(1.2) saturate(1.25)">Contraste cinéma</option><option value="brightness(1.1) saturate(1.35)">Lumineux</option></select></label>
+            <label class="workshop-field" for="montageAspect"><span>Format</span><select id="montageAspect"><option value="landscape">Paysage · 16:9</option><option value="portrait">Portrait · 9:16</option><option value="square">Carré · 1:1</option></select></label>
+            <label class="workshop-field workshop-range" for="montageSpeed"><span>Vitesse <output id="montageSpeedValue" for="montageSpeed">1×</output></span><input id="montageSpeed" type="range" min="50" max="200" value="100"></label>
+            <label class="password-check montage-fade-control"><input id="montageFade" type="checkbox" checked><span>Fondus au début et à la fin des clips</span></label>
+          </div>
+          <div class="montage-actions"><button class="primary-button" id="exportMontage" type="button" disabled>Exporter le montage en WebM</button><button class="small-action" id="cancelMontageExport" type="button" hidden>Arrêter l’export</button><button class="text-button" id="clearMontage" type="button" disabled>Vider la timeline</button></div>
+          <progress class="montage-progress" id="montageProgress" max="1" value="0" aria-label="Progression de l’export vidéo"></progress>
+          <p class="montage-status" id="montageStatus" role="status" aria-live="polite">Le montage et l’export sont effectués dans le navigateur.</p>
+          <a class="montage-download" id="montageDownload" hidden download="mon-montage.webm">Télécharger le montage terminé</a>
+        </section>
+        <p class="workshop-note">L’export WebM est réalisé en temps réel par ton navigateur. L’audio des clips et des pistes musicales est mixé s’il est pris en charge.</p>
+      </section>
+
+      <section class="workshop-panel glass" id="aiPanel" role="tabpanel" aria-labelledby="aiTab" hidden>
+        <div class="workshop-panel-heading">
+          <div><p class="eyebrow">TON ASSISTANT CRÉATIF</p><h3>Imagine ton prochain montage.</h3><p>Génère un scénario, un storyboard ou une image, puis utilise-les dans ton montage.</p></div>
+        </div>
+        <div class="ai-security-note"><strong>Clé API protégée</strong><span>Elle reste dans ce champ pendant ta visite et est envoyée uniquement à l’URL de fournisseur que tu saisis. Elle n’est jamais enregistrée par le site.</span></div>
+        <div class="ai-settings-grid">
+          <label class="workshop-field" for="aiEndpoint"><span>URL de base de l’API compatible OpenAI</span><input id="aiEndpoint" type="url" autocomplete="url" placeholder="https://ton-fournisseur.example/v1"></label>
+          <label class="workshop-field" for="aiModel"><span>Nom du modèle</span><input id="aiModel" type="text" autocomplete="off" placeholder="Nom exact du modèle"></label>
+          <label class="workshop-field ai-key-field" for="aiApiKey"><span>Ta clé API (non enregistrée)</span><input id="aiApiKey" type="password" autocomplete="new-password" placeholder="Colle ta clé uniquement ici"></label>
+        </div>
+        <label class="workshop-field" for="aiPrompt"><span>Décris ton idée</span><textarea id="aiPrompt" rows="4" maxlength="2000" placeholder="Ex. Une vidéo courte au bord de la mer au coucher du soleil, ambiance paisible…"></textarea></label>
+        <div class="ai-actions"><button class="primary-button" id="aiGenerateStory" type="button">Créer un script & storyboard</button><button class="small-action" id="aiGenerateImage" type="button">Générer une image</button></div>
+        <p class="ai-status" id="aiStatus" role="status" aria-live="polite">Renseigne ton fournisseur, son modèle et ta clé pour activer la génération.</p>
+        <article class="ai-result glass" id="aiResult" hidden><h4>Ton idée</h4><pre id="aiStory"></pre></article>
+        <div class="ai-image-result" id="aiImageResult" hidden><img id="aiGeneratedImage" alt="Image générée à partir de ton idée"><a id="aiImageDownload" download="image-generee.png">Télécharger l’image</a></div>
+        <p class="workshop-note">Les services d’images et de vidéos génératives ne sont pas standardisés : le bouton image nécessite que ton fournisseur prenne en charge l’API d’images OpenAI-compatible. Pour une vidéo IA, utilise les images, clips et storyboards dans la timeline de montage.</p>
+      </section>
+
+      <section class="workshop-panel glass" id="passwordPanel" role="tabpanel" aria-labelledby="passwordTab" hidden>
+        <div class="workshop-panel-heading">
+          <div><p class="eyebrow">PROTÈGE TES COMPTES</p><h3>Un mot de passe à ta mesure.</h3><p>Choisis les caractères et la longueur. La génération se fait sur ton appareil.</p></div>
+        </div>
+        <div class="password-workspace">
+          <div class="password-output-wrap">
+            <label for="generatedPassword">Ton mot de passe</label>
+            <div class="password-output-row"><input id="generatedPassword" type="text" readonly value="" placeholder="Clique sur Générer"><button class="secondary-button" id="copyPassword" type="button" disabled>Copier</button></div>
+            <button class="primary-button password-generate" id="generatePassword" type="button">Générer un mot de passe <span aria-hidden="true">✦</span></button>
+            <p class="password-strength" id="passwordStrength" aria-live="polite">Personnalise les options puis génère ton mot de passe.</p>
+          </div>
+          <div class="password-options">
+            <label class="workshop-range" for="passwordLength"><span>Longueur <output id="passwordLengthValue" for="passwordLength">20 caractères</output></span><input id="passwordLength" type="range" min="8" max="64" value="20"></label>
+            <label class="password-check"><input id="includeLowercase" type="checkbox" checked><span>Lettres minuscules <code>abc</code></span></label>
+            <label class="password-check"><input id="includeUppercase" type="checkbox" checked><span>Lettres majuscules <code>ABC</code></span></label>
+            <label class="password-check"><input id="includeNumbers" type="checkbox" checked><span>Chiffres <code>123</code></span></label>
+            <label class="password-check"><input id="includeSymbols" type="checkbox" checked><span>Symboles <code>!@#</code></span></label>
+            <label class="password-check"><input id="excludeAmbiguous" type="checkbox"><span>Éviter les caractères ambigus <code>O0, l1</code></span></label>
+          </div>
+        </div>
+        <p class="workshop-note">Le mot de passe généré n’est ni envoyé ni enregistré par le site.</p>
+      </section>
+    </section>
+
+    <section class="breathing-note" id="breathingGuide" aria-label="Respiration guidée">
+      <span class="breathing-mark" aria-hidden="true"></span>
+      <p><strong id="breathPhase" aria-live="polite">Un instant pour respirer.</strong><br><span id="breathHint">Suis le cercle, ou prends ta pause à ta façon.</span></p>
+      <button class="small-action breath-toggle" id="breathToggle" type="button" aria-pressed="false">Commencer</button>
+      <span class="breathing-caption">À TON RYTHME</span>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo small-logo" href="#univers">Estgaming<span>.</span></a>
+    <span>Un univers de détente à façonner à ton rythme.</span>
+    <span>© 2026 Estgaming</span>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
